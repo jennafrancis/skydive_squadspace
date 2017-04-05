@@ -1,0 +1,2 @@
+class JumpsController < ApplicationController
+end
