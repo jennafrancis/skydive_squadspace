@@ -19,4 +19,9 @@ class UsersController < ApplicationController
     erb :'users/new'
   end
 
+  post '/signup' do
+
+    redirect '/'
+  end
+
 end
