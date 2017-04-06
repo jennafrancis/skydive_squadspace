@@ -1,4 +1,4 @@
-<h2>Made another Jump? Post it here!</h2>
+<h1>Made another Jump? Post it here!</h1>
 
 <form action="/jumps" method="post">
   <label for="kind">What kind of jump?</label>
@@ -7,11 +7,20 @@
   <label for="kind">From how high?</label>
   <input type="text" name="jump[height]">
   <br></br>
-  <label for="location">Location</label>
-  <input type="text" name="location[name]">
-  <br></br>
   <label for="comments">Comments</label>
   <input type="text" name="jump[comments]">
+  <br></br>
+  <h3>Where?</h3>
+  <label for="location">Choose a location</label>
+  <br></br>
+  <% @locations.each do |location| %>
+    <input type="radio" name="jump[location_id]" value="<%= location.id %>"><%= location.name %>
+  <% end %>
+  <br></br>
+  <label for="new_location">Or create a new one</label>
+  <br></br>
+  Name: <input type="text" name="location[name]">
+  Address: <input type="text" name="location[address]">
   <br></br>
   <input type="submit" id="submit" value="Add Jump">
 </form>

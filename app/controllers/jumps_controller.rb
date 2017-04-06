@@ -6,6 +6,7 @@ class JumpsController < ApplicationController
   end
 
   get '/jumps/new' do
+    @locations = Location.all
     erb :'jumps/new'
   end
 
