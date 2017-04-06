@@ -20,8 +20,15 @@ class UsersController < ApplicationController
   end
 
   post '/signup' do
-
-    redirect '/'
+    @user = User.new(params)
+    if @user.valid?
+      @user.save
+      session[:user_id] = @user.id
+      redirect '/'
+    else
+      #error message
+      redirect '/signup'
+    end
   end
 
 end
