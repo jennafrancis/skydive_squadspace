@@ -1,0 +1,6 @@
+<h1>Skydive Squadspace</h1>
+
+  <ul><% @jumps.each do |jump| %>
+    <li>"<%= jump.comments %>" -<a href="/users/<%= jump.user.slug %>"><%= jump.user.username %></a><br>
+    At <a href="/locations/<%= jump.location.slug %>"><%= jump.location.name %></a></li>
+    <% end %></ul>
