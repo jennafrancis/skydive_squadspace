@@ -1,0 +1,11 @@
+<h1><%= @location.name %><h1>
+  <h2><%= @location.address %></h2>
+
+  <br></br>
+
+  <h3>Visitors:</h3>
+  <ul><% @location.jumps.each do |jump| %>
+    <li>"<%= jump.comments %>" -<a href="#"><%= jump.user.username %></a><br>
+    <%= jump.kind %>, <%= jump.height %></li>
+      <!-- link jump.user.username to user page -->
+    <% end %></ul>

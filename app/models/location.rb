@@ -4,7 +4,7 @@ class Location < ActiveRecord::Base
   validates_presence_of :name, :address
 
   def slug
-    self.username.downcase.gsub(" ","-")
+    self.name.downcase.gsub(" ","-")
   end
 
   def self.find_by_slug(slug)
