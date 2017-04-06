@@ -31,4 +31,8 @@ class UsersController < ApplicationController
     end
   end
 
+  get '/users/:slug' do
+    
+  end
+
 end
