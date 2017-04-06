@@ -1,0 +1,5 @@
+<h1>Locations</h1>
+
+<ul><% @locations.each do |location| %>
+  <li><a href="/locations/<%= location.slug %>"><%= location.name %></a>, <%= location.address %></li>
+  <% end %></ul>
