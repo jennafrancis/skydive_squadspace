@@ -10,7 +10,7 @@ class JumpsController < ApplicationController
   end
 
   post '/jumps' do
-
+    raise params.inspect
     # redirect to user profile
   end
 
