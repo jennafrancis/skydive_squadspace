@@ -10,4 +10,5 @@
   <ol><% @user.jumps.each do |jump| %>
     <li><%= jump.kind %> jump from <%= jump.height %> at <a href="/locations/<%= jump.location.slug %>"><%= jump.location.name %></a><br>
       "<%= jump.comments %>"</li>
+      <a href="/jumps/<%= jump.id %>/edit">Edit or delete</a>
     <% end %></ol>
