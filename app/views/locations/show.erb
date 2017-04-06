@@ -5,7 +5,6 @@
 
   <h3>Visitors:</h3>
   <ul><% @location.jumps.each do |jump| %>
-    <li>"<%= jump.comments %>" -<a href="#"><%= jump.user.username %></a><br>
+    <li>"<%= jump.comments %>" -<a href="/users/<%= jump.user.slug %>"><%= jump.user.username %></a><br>
     <%= jump.kind %>, <%= jump.height %></li>
-      <!-- link jump.user.username to user page -->
     <% end %></ul>

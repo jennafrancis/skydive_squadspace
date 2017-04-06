@@ -8,7 +8,6 @@
 
   <h3>Jumps</h3>
   <ol><% @user.jumps.each do |jump| %>
-    <li><%= jump.kind %> jump from <%= jump.height %> at <a href="#"><%= jump.location.name %></a><br>
+    <li><%= jump.kind %> jump from <%= jump.height %> at <a href="/locations/<%= jump.location.slug %>"><%= jump.location.name %></a><br>
       "<%= jump.comments %>"</li>
-      <!-- link jump.location to location page -->
     <% end %></ol>
