@@ -1,0 +1,14 @@
+<h2><%= @jump.user.name %>'s jump:</h2>
+<%= @jump.kind %> jump from <%= @jump.height %> at <%= @jump.location.name %></a><br>
+    "<%= @jump.comments %>"
+
+<br></br>
+
+<a href="/jumps/<%= @jump.id %>/edit">Edit Jump</a>
+
+<br></br>
+
+  <form action="/jumps/<%= @jump.id %>" method="post">
+    <input type="hidden" id="hidden" name="_method" value="delete">
+    <input type="submit" value="Delete Jump">
+  </form>
