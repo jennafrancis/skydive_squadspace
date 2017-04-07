@@ -62,7 +62,7 @@ class JumpsController < ApplicationController
     @jump = Jump.find(params[:id])
     @jump.update(kind: params[:kind], height: params[:height], comments: params[:comments])
     flash[:message] = "Successfully updated jump."
-    redirect "/jumps/#{@jump.id}"
+    redirect "/users/#{@jump.user.slug}"
   end
 
   delete '/jumps/:id' do

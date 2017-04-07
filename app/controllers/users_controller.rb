@@ -23,7 +23,6 @@ class UsersController < ApplicationController
     if is_logged_in?
       session.clear
     end
-    flash[:message] = "Successfully logged out."
     redirect '/login'
   end
 
