@@ -9,9 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Jenna Francis"]
   spec.email         = ["jef399@nyu.edu"]
 
-  spec.summary       = %q{TODO: Write a short summary, because Rubygems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.summary       = %q{Use SkydiveSquadspace as a platfrom to log jumps that you've made, check out new locations you may want to go, and see what others in the skydiving community are up to.}
+  spec.homepage      = "https://github.com/jennafrancis/skydive_squadspace"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
   # to allow pushing to a single host or delete this section to allow pushing to any host.

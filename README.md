@@ -1,8 +1,8 @@
 # SkydiveSquadspace
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/skydive_squadspace`. To experiment with that code, run `bin/console` for an interactive prompt.
+Have you made a habit of jumping out of perfectly good airplanes?
 
-TODO: Delete this and the text above, and describe your gem
+Use SkydiveSquadspace as a platfrom to log jumps that you've made, check out new locations you may want to go, and see what others in the skydiving community are up to. 
 
 ## Installation
 
@@ -33,4 +33,3 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/jennafrancis/skydive_squadspace. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
-
