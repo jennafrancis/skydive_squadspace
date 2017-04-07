@@ -5,10 +5,13 @@
     <title>Skydive Squadspace</title>
   </head>
   <body>
-    <a href="/jumps">Squadspace</a>
-    <a href="/jumps/new">Add a Jump</a>
-    <a href="/locations">Locations</a>
-    <a href="/logout">Logout</a>
+    <% if is_logged_in? %>
+      <a href="/jumps">Squadspace</a>
+      <a href="/jumps/new">Add a Jump</a>
+      <a href="/locations">Locations</a>
+      <a href="/users/<%= current_user.slug %>">Your Space</a>
+      <a href="/logout">Logout</a>
+      <% end %>
     <br></br>
     <%= yield %>
   </body>
