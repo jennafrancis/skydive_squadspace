@@ -1,3 +1,7 @@
+<% if flash.has?(:message) %>
+  <%= flash[:message] %>
+<% end %>
+
 <h1>Made another Jump? Post it here!</h1>
 
 <form action="/jumps" method="post">

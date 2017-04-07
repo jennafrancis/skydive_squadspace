@@ -27,9 +27,10 @@ class JumpsController < ApplicationController
     end
     if @jump.valid?
       @jump.save
+      flash[:message] = "Successfully created jump."
       redirect "/users/#{@user.slug}"
     else
-      # error message
+      flash[:message] = "Jump invalid. Please try again."
       redirect '/jumps/new'
     end
   end
@@ -65,10 +66,11 @@ class JumpsController < ApplicationController
 
   delete '/jumps/:id' do
     @jump = Jump.find(params[:id])
+    @user = @jump.user
     if is_logged_in? && current_user == @jump.user
       @jump.destroy
     end
     #error message
-    redirect "/jumps/#{@jump.id}"
+    redirect "/users/#{@user.slug}"
   end
 end
