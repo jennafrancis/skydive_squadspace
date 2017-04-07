@@ -11,8 +11,19 @@ class JumpsController < ApplicationController
   end
 
   post '/jumps' do
-    raise params.inspect
-    # redirect to user profile
+    @user = User.find(session[:user_id])
+    @jump = @user.jumps.build(params[:jump])
+    if params[:jump][:location_id] == nil
+      location = Location.create(params[:location])
+      @jump.location_id = location.id
+    end
+    if @jump.valid?
+      @jump.save
+      redirect "/users/#{@user.slug}"
+    else
+      # error message
+      redirect '/jumps/new'
+    end
   end
 
   get '/jumps/:id' do
