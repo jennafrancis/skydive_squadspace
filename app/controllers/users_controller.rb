@@ -14,7 +14,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect '/jumps'
     else
-      #error message
+      flash[:message] = "Invalid username or password."
       redirect '/login'
     end
   end
@@ -23,6 +23,7 @@ class UsersController < ApplicationController
     if is_logged_in?
       session.clear
     end
+    flash[:message] = "Successfully logged out."
     redirect '/login'
   end
 
@@ -41,7 +42,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect '/jumps'
     else
-      #error message
+      flash[:message] = "Please make sure all required fields are complete and try again."
       redirect '/signup'
     end
   end
