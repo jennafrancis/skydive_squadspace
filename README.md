@@ -2,7 +2,7 @@
 
 Have you made a habit of jumping out of perfectly good airplanes?
 
-Use SkydiveSquadspace as a platfrom to log jumps that you've made, check out new locations you may want to go, and see what others in the skydiving community are up to. 
+Use SkydiveSquadspace as a platform to log jumps that you've made, check out new locations you may want to go, and see what others in the skydiving community are up to. 
 
 ## Installation
 
