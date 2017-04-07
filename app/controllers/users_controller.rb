@@ -19,6 +19,13 @@ class UsersController < ApplicationController
     end
   end
 
+  get '/logout' do
+    if is_logged_in?
+      session.clear
+    end
+    redirect '/login'
+  end
+
   get '/signup' do
     if is_logged_in?
       redirect '/jumps'
