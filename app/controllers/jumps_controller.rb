@@ -33,13 +33,15 @@ class JumpsController < ApplicationController
 
   get '/jumps/:id/edit' do
     #only if the jump belongs to the user currently signed in
+    @jump = Jump.find(params[:id])
     erb :'jumps/edit'
     #otherwise show error message and redirect back to homepage '/jumps'
   end
 
-  post 'jumps/:id' do
-
-    #redirect to successfully edited jump
+  post '/jumps/:id' do
+    @jump = Jump.find(params[:id])
+    @jump.update(kind: params[:kind], height: params[:height], comments: params[:comments])
+    redirect "/jumps/<%= @jump.id %>"
   end
 
   delete '/jumps/:id' do

@@ -1,0 +1,16 @@
+<h1>Edit your jump here</h1>
+
+<form action="/jumps/<%= @jump.id %>" method="post">
+  <label for="kind">Kind*</label>
+  <input type="text" name="kind" value="<%= @jump.kind %>">
+  <br></br>
+  <label for="kind">Height*</label>
+  <input type="text" name="height" value="<%= @jump.height %>">
+  <br></br>
+  <label for="comments">Comments</label>
+  <input type="text" name="comments" value="<%= @jump.comments %>">
+  <br></br>
+  *Required fields
+  <br></br>
+  <input type="submit" id="submit" value="Edit Jump">
+</form>
