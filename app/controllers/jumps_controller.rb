@@ -27,10 +27,10 @@ class JumpsController < ApplicationController
     end
     if @jump.valid?
       @jump.save
-      flash[:message] = "Successfully created jump."
+      flash[:message] = "Successfully posted jump."
       redirect "/users/#{@user.slug}"
     else
-      flash[:message] = "Jump invalid. Please try again."
+      flash[:message] = "Jump was invalid. Please try again."
       redirect '/jumps/new'
     end
   end
@@ -50,7 +50,7 @@ class JumpsController < ApplicationController
       if current_user == @jump.user
         erb :'jumps/edit'
       else
-        # error message - you do not have permission to edit this jump
+        flash[:message] = "You do not have permission to edit or delete this jump."
         redirect "/jumps/#{@jump.id}"
       end
     else
@@ -61,7 +61,8 @@ class JumpsController < ApplicationController
   post '/jumps/:id' do
     @jump = Jump.find(params[:id])
     @jump.update(kind: params[:kind], height: params[:height], comments: params[:comments])
-    redirect "/jumps/<%= @jump.id %>"
+    flash[:message] = "Successfully updated jump."
+    redirect "/jumps/#{@jump.id}"
   end
 
   delete '/jumps/:id' do
@@ -69,8 +70,11 @@ class JumpsController < ApplicationController
     @user = @jump.user
     if is_logged_in? && current_user == @jump.user
       @jump.destroy
+      flash[:message] = "Successfully deleted jump."
+      redirect "/users/#{@user.slug}"
+    else
+      flash[:message] = "You do not have permission to edit or delete this jump."
+      redirect "/jumps/#{@jump.id}"
     end
-    #error message
-    redirect "/users/#{@user.slug}"
   end
 end

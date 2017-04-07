@@ -1,3 +1,7 @@
+<% if flash.has?(:message) %>
+  <%= flash[:message] %>
+<% end %>
+
 <h2><%= @jump.user.name %>'s jump:</h2>
 <%= @jump.kind %> jump from <%= @jump.height %> at <%= @jump.location.name %></a><br>
     "<%= @jump.comments %>"<br>
