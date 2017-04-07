@@ -38,20 +38,25 @@ class JumpsController < ApplicationController
   get '/jumps/:id' do
     if is_logged_in?
       @jump = Jump.find(params[:id])
-      erb :'jumps/show'
+      if current_user == @jump.user
+        erb :'jumps/show'
+      else
+        flash[:message] = "You do not have permission to edit or delete this jump."
+        redirect "/users/#{@jump.user.slug}"
+      end
     else
       redirect '/'
     end
   end
 
   get '/jumps/:id/edit' do
-    @jump = Jump.find(params[:id])
     if is_logged_in?
+      @jump = Jump.find(params[:id])
       if current_user == @jump.user
         erb :'jumps/edit'
       else
         flash[:message] = "You do not have permission to edit or delete this jump."
-        redirect "/jumps/#{@jump.id}"
+        redirect "/users/#{@jump.user.slug}"
       end
     else
       redirect '/'
@@ -71,10 +76,7 @@ class JumpsController < ApplicationController
     if is_logged_in? && current_user == @jump.user
       @jump.destroy
       flash[:message] = "Successfully deleted jump."
-      redirect "/users/#{@user.slug}"
-    else
-      flash[:message] = "You do not have permission to edit or delete this jump."
-      redirect "/jumps/#{@jump.id}"
     end
+    redirect "/users/#{@user.slug}"
   end
 end
