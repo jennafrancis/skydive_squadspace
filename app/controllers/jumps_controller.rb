@@ -1,13 +1,21 @@
 class JumpsController < ApplicationController
 
   get '/jumps' do
-    @jumps = Jump.all
-    erb :'jumps/index'
+    if is_logged_in?
+      @jumps = Jump.all
+      erb :'jumps/index'
+    else
+      redirect '/'
+    end
   end
 
   get '/jumps/new' do
-    @locations = Location.all
-    erb :'jumps/new'
+    if is_logged_in?
+      @locations = Location.all
+      erb :'jumps/new'
+    else
+      redirect '/'
+    end
   end
 
   post '/jumps' do
@@ -27,15 +35,23 @@ class JumpsController < ApplicationController
   end
 
   get '/jumps/:id' do
-    @jump = Jump.find(params[:id])
-    erb :'jumps/show'
+    if is_logged_in?
+      @jump = Jump.find(params[:id])
+      erb :'jumps/show'
+    else
+      redirect '/'
+    end
   end
 
   get '/jumps/:id/edit' do
-    #only if the jump belongs to the user currently signed in
-    @jump = Jump.find(params[:id])
-    erb :'jumps/edit'
-    #otherwise show error message and redirect back to homepage '/jumps'
+    if is_logged_in?
+      #only if the jump belongs to the user currently signed in
+      @jump = Jump.find(params[:id])
+      erb :'jumps/edit'
+      #otherwise error and redirect back to jumps/id
+    else
+      redirect '/'
+    end
   end
 
   post '/jumps/:id' do
