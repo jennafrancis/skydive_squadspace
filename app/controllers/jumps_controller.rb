@@ -44,11 +44,14 @@ class JumpsController < ApplicationController
   end
 
   get '/jumps/:id/edit' do
+    @jump = Jump.find(params[:id])
     if is_logged_in?
-      #only if the jump belongs to the user currently signed in
-      @jump = Jump.find(params[:id])
-      erb :'jumps/edit'
-      #otherwise error and redirect back to jumps/id
+      if current_user == @jump.user
+        erb :'jumps/edit'
+      else
+        # error message - you do not have permission to edit this jump
+        redirect "/jumps/#{@jump.id}"
+      end
     else
       redirect '/'
     end
@@ -66,6 +69,6 @@ class JumpsController < ApplicationController
       @jump.destroy
     end
     #error message
-    redirect '/jumps'
+    redirect "/jumps/#{@jump.id}"
   end
 end
