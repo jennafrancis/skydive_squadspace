@@ -1,7 +1,11 @@
 class UsersController < ApplicationController
 
   get '/login' do
-    erb :'users/login'
+    if is_logged_in?
+      redirect '/jumps'
+    else
+      erb :'users/login'
+    end
   end
 
   post '/login' do
@@ -16,7 +20,11 @@ class UsersController < ApplicationController
   end
 
   get '/signup' do
-    erb :'users/new'
+    if is_logged_in?
+      redirect '/jumps'
+    else
+      erb :'users/new'
+    end
   end
 
   post '/signup' do
@@ -32,8 +40,12 @@ class UsersController < ApplicationController
   end
 
   get '/users/:slug' do
-    @user = User.find_by_slug(params[:slug])
-    erb :'users/show'
+    if is_logged_in?
+      @user = User.find_by_slug(params[:slug])
+      erb :'users/show'
+    else
+      redirect '/'
+    end
   end
 
 end
