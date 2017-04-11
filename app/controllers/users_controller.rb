@@ -36,15 +36,17 @@ class UsersController < ApplicationController
 
   post '/signup' do
     @user = User.new(params)
-    if @user.valid?
-      @user.save
+    binding.pry
+    if @user.save
       session[:user_id] = @user.id
       redirect '/jumps'
     else
-      flash[:message] = "Please make sure all required fields are complete and try again."
+      flash[:message] = @user.errors.full_messages.join(", ")
       redirect '/signup'
     end
   end
+
+
 
   get '/users/:slug' do
     if is_logged_in?
